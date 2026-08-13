@@ -89,18 +89,18 @@ export const SAFETY_QUIZ: QuizQuestion[] = [
     correctIndex: 1,
   },
   {
-    question: "Which tool is used to tighten a standoff (the metal spacer/post used to mount electronics)?",
-    options: ["T15 screwdriver", "Nut driver", "Standoff driver", "Wrench"],
-    correctIndex: 2,
+    question: "Where should your Robot brain be mounted?",
+    options: ["Center of the robot", "On the drivetrain", "Anywhere", "Interior of the Robot"],
+    correctIndex: 3,
   },
   {
-    question: "Why should the Brain and battery be mounted in a protected, interior location on the robot?",
+    question: "How should you use tools?",
     options: [
-      "It looks cleaner for judging photos",
-      "So they can't be damaged or have wires pulled out during contact with other robots",
+      "Infront of someone",
+      "No safety goggles",
       "It's required only for VEX IQ, not V5",
-      "So the battery charges faster",
+      "Safety goggles + people behind you",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
   },
 ];
