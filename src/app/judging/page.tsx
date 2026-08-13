@@ -57,9 +57,9 @@ export default function JudgingPage() {
         ]}
       />
 
-      <div className="mb-12 rounded-lg border border-black/10 p-5 dark:border-white/10">
+      <div className="mb-12 rounded-lg border border-white/10 bg-white/5 p-5">
         <h2 className="text-lg font-bold">Sample questions to rehearse</h2>
-        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-neutral-700 dark:text-neutral-300">
+        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-neutral-300">
           <li>Walk me through your robot&apos;s design process from start to finish.</li>
           <li>What alternative designs did you consider, and why did you reject them?</li>
           <li>What part of the robot are you least happy with, and how would you improve it?</li>

@@ -125,8 +125,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-10 rounded-md border-l-4 border-brand-green bg-brand-green/5 px-5 py-4 text-sm text-neutral-700 dark:text-neutral-300">
-        <strong className="text-brand-green dark:text-brand-green-light">Unofficial resource:</strong>{" "}
+      <div className="mb-10 rounded-md border-l-4 border-brand-green bg-brand-green/10 px-5 py-4 text-sm text-neutral-300">
+        <strong className="text-brand-green-light">Unofficial resource:</strong>{" "}
         this site is a community-curated helper, not a substitute for your team&apos;s official
         rules, lead instructions, or the current game manual. Always follow current lab and
         event guidance first.
@@ -134,7 +134,7 @@ export default function Home() {
 
       <div className="mb-6 flex items-end justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">
+          <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
             Get started
           </p>
           <h2 className="mt-1 text-2xl font-extrabold tracking-tight">
@@ -143,7 +143,7 @@ export default function Home() {
         </div>
         <Link
           href="/glossary"
-          className="text-sm font-semibold text-brand-green hover:underline dark:text-brand-green-light"
+          className="text-sm font-semibold text-brand-green-light hover:underline"
         >
           Full glossary &rarr;
         </Link>

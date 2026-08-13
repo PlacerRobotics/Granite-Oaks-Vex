@@ -116,14 +116,14 @@ export default function GlossaryPage() {
 
       {CATEGORIES.map((cat) => (
         <section key={cat.name} className="mb-10">
-          <h2 className="mb-4 text-lg font-bold tracking-tight text-brand-green dark:text-brand-green-light">
+          <h2 className="mb-4 text-lg font-bold tracking-tight text-brand-green-light">
             {cat.name}
           </h2>
           <dl className="grid gap-4 sm:grid-cols-2">
             {cat.terms.map((t) => (
-              <div key={t.term} className="rounded-lg border border-black/10 p-4 dark:border-white/10">
-                <dt className="font-semibold text-amber-700 dark:text-brand-gold-light">{t.term}</dt>
-                <dd className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">{t.def}</dd>
+              <div key={t.term} className="rounded-lg border border-white/10 bg-white/5 p-4">
+                <dt className="font-semibold text-brand-gold-light">{t.term}</dt>
+                <dd className="mt-1 text-sm text-neutral-300">{t.def}</dd>
               </div>
             ))}
           </dl>

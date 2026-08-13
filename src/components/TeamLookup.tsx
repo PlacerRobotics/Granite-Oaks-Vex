@@ -66,7 +66,7 @@ export default function TeamLookup() {
           value={number}
           onChange={(e) => setNumber(e.target.value)}
           placeholder="e.g. 90210A"
-          className="flex-1 min-w-[200px] rounded-md border border-black/15 bg-transparent px-4 py-2.5 text-sm dark:border-white/20"
+          className="flex-1 min-w-[200px] rounded-md border border-white/20 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-neutral-500"
         />
         <button
           type="submit"
@@ -78,37 +78,37 @@ export default function TeamLookup() {
       </form>
 
       {error && (
-        <div className="mb-8 rounded-md border border-red-600/30 bg-red-600/5 p-4 text-sm text-red-700 dark:text-red-400">
+        <div className="mb-8 rounded-md border border-red-500/40 bg-red-500/10 p-4 text-sm text-red-300">
           {error}
         </div>
       )}
 
       {results && results.length === 0 && (
-        <p className="text-sm text-neutral-500">No teams found.</p>
+        <p className="text-sm text-neutral-400">No teams found.</p>
       )}
 
       <div className="grid gap-4">
         {results?.map(({ team, events }) => (
-          <div key={team.id} className="rounded-xl border border-black/10 p-5 dark:border-white/10">
+          <div key={team.id} className="rounded-xl border border-white/10 bg-white/5 p-5">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="text-lg font-bold">
-                {team.number} <span className="font-normal text-neutral-500">— {team.team_name}</span>
+                {team.number} <span className="font-normal text-neutral-400">— {team.team_name}</span>
               </h3>
-              <span className="text-xs font-medium uppercase tracking-wide text-brand-green dark:text-brand-green-light">
+              <span className="text-xs font-medium uppercase tracking-wide text-brand-green-light">
                 {team.program?.name}
               </span>
             </div>
-            <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+            <p className="mt-1 text-sm text-neutral-300">
               {team.organization} &middot; {formatLocation(team.location)}
               {team.grade ? ` · ${team.grade}` : ""}
             </p>
             {team.robot_name && (
-              <p className="mt-1 text-sm text-neutral-500">Robot: {team.robot_name}</p>
+              <p className="mt-1 text-sm text-neutral-400">Robot: {team.robot_name}</p>
             )}
 
             {events.length > 0 && (
               <div className="mt-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
                   Recent events
                 </p>
                 <ul className="mt-2 space-y-1.5">
@@ -119,19 +119,19 @@ export default function TeamLookup() {
                           href={`https://www.robotevents.com/robot-competitions/vex-robotics-competition/${ev.sku}.html`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-medium text-neutral-800 hover:text-brand-green dark:text-neutral-200"
+                          className="font-medium text-neutral-200 hover:text-brand-green-light"
                         >
                           {ev.name}
                         </a>
-                        <span className="text-neutral-500">
+                        <span className="text-neutral-400">
                           {" "}
                           — {new Date(ev.start).toLocaleDateString()} · {formatLocation(ev.location)}
                         </span>
                       </li>
                     ) : (
-                      <li key={ev.id} className="text-sm text-neutral-700 dark:text-neutral-300">
+                      <li key={ev.id} className="text-sm text-neutral-300">
                         {ev.name}
-                        <span className="text-neutral-500">
+                        <span className="text-neutral-400">
                           {" "}
                           — {new Date(ev.start).toLocaleDateString()} · {formatLocation(ev.location)}
                         </span>

@@ -37,14 +37,14 @@ export default function Nav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/10 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-neutral-950/90">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-black/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center gap-2 font-bold tracking-tight">
           <span className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-black text-brand-gold">
             V
           </span>
           <span>
-            VEX Basics <span className="text-brand-green dark:text-brand-green-light">101</span>
+            VEX Basics <span className="text-brand-green-light">101</span>
           </span>
         </Link>
 
@@ -59,7 +59,7 @@ export default function Nav() {
                 className={`flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                   active
                     ? "bg-brand-green text-white"
-                    : "text-neutral-700 hover:bg-black/5 dark:text-neutral-300 dark:hover:bg-white/10"
+                    : "text-neutral-300 hover:bg-white/10"
                 }`}
               >
                 {item.label}
@@ -72,7 +72,7 @@ export default function Nav() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="rounded-md border border-black/10 px-3 py-2 text-sm font-medium lg:hidden dark:border-white/20"
+          className="rounded-md border border-white/20 px-3 py-2 text-sm font-medium text-white lg:hidden"
           aria-expanded={open}
           aria-label="Toggle navigation"
         >
@@ -81,7 +81,7 @@ export default function Nav() {
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-black/10 px-4 py-3 lg:hidden dark:border-white/10">
+        <nav className="flex flex-col gap-1 border-t border-white/10 px-4 py-3 lg:hidden">
           {NAV_ITEMS.map((item) => {
             const active = pathname === item.href;
             const locked = !passed && GATED_PATHS.includes(item.href);
@@ -93,7 +93,7 @@ export default function Nav() {
                 className={`flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium ${
                   active
                     ? "bg-brand-green text-white"
-                    : "text-neutral-700 hover:bg-black/5 dark:text-neutral-300 dark:hover:bg-white/10"
+                    : "text-neutral-300 hover:bg-white/10"
                 }`}
               >
                 {item.label}

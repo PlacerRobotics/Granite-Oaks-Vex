@@ -19,7 +19,7 @@ function SafetySection({
   return (
     <section className="mb-10">
       <h2 className="text-xl font-bold tracking-tight">{title}</h2>
-      <div className="mt-3 space-y-3 text-sm text-neutral-700 dark:text-neutral-300">
+      <div className="mt-3 space-y-3 text-sm text-neutral-300">
         {children}
       </div>
     </section>
@@ -104,7 +104,7 @@ export default function SafetyPage() {
       <SafetySection title="Basic tool reference">
         <p>
           Full descriptions of every part and tool live in the{" "}
-          <a href="/glossary" className="font-medium text-brand-green hover:underline dark:text-brand-green-light">
+          <a href="/glossary" className="font-medium text-brand-green-light hover:underline">
             glossary
           </a>
           . The core hand tools you&apos;ll use constantly:
@@ -117,9 +117,9 @@ export default function SafetyPage() {
         </ul>
       </SafetySection>
 
-      <section className="mt-16 border-t border-black/10 pt-10 dark:border-white/10">
+      <section className="mt-16 border-t border-white/10 pt-10">
         <h2 className="text-2xl font-extrabold tracking-tight">Safety quiz</h2>
-        <p className="mt-2 max-w-2xl text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="mt-2 max-w-2xl text-sm text-neutral-400">
           Score {"≥"}70% (7 of 10) to unlock every other page on this site. You can retake it as many
           times as you need.
         </p>

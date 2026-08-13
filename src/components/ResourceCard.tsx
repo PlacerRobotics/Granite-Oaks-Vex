@@ -17,13 +17,13 @@ export type Resource = {
 };
 
 const TAG_STYLES: Record<ResourceTag, string> = {
-  Official: "bg-brand-green/10 text-brand-green dark:text-brand-green-light",
-  GitHub: "bg-neutral-900/10 text-neutral-800 dark:bg-white/10 dark:text-neutral-200",
-  Video: "bg-rose-600/10 text-rose-700 dark:text-rose-400",
-  Forum: "bg-blue-600/10 text-blue-700 dark:text-blue-400",
-  Tool: "bg-emerald-600/10 text-emerald-700 dark:text-emerald-400",
-  Docs: "bg-amber-600/10 text-amber-700 dark:text-amber-400",
-  Community: "bg-purple-600/10 text-purple-700 dark:text-purple-400",
+  Official: "bg-brand-green/20 text-brand-green-light",
+  GitHub: "bg-white/10 text-neutral-200",
+  Video: "bg-rose-500/15 text-rose-300",
+  Forum: "bg-blue-500/15 text-blue-300",
+  Tool: "bg-emerald-500/15 text-emerald-300",
+  Docs: "bg-amber-500/15 text-amber-300",
+  Community: "bg-purple-500/15 text-purple-300",
 };
 
 export default function ResourceCard({ title, url, description, tag }: Resource) {
@@ -32,7 +32,7 @@ export default function ResourceCard({ title, url, description, tag }: Resource)
   const inner = (
     <>
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-semibold text-neutral-900 group-hover:text-brand-green dark:text-neutral-100 dark:group-hover:text-brand-green-light">
+        <h3 className="font-semibold text-neutral-100 group-hover:text-brand-green-light">
           {title}
         </h3>
         <span
@@ -41,9 +41,9 @@ export default function ResourceCard({ title, url, description, tag }: Resource)
           {tag}
         </span>
       </div>
-      <p className="text-sm text-neutral-600 dark:text-neutral-400">{description}</p>
+      <p className="text-sm text-neutral-300">{description}</p>
       {isExternal && (
-        <span className="text-xs text-neutral-400 break-all">
+        <span className="text-xs text-neutral-500 break-all">
           {url.replace(/^https?:\/\//, "")}
         </span>
       )}
@@ -51,7 +51,7 @@ export default function ResourceCard({ title, url, description, tag }: Resource)
   );
 
   const className =
-    "group flex flex-col gap-2 rounded-lg border border-black/10 p-4 transition-colors hover:border-brand-green/40 hover:bg-brand-green/5 dark:border-white/10 dark:hover:bg-brand-green/10";
+    "group flex flex-col gap-2 rounded-lg border border-white/10 bg-white/5 p-4 transition-colors hover:border-brand-green/50 hover:bg-brand-green/10";
 
   if (isExternal) {
     return (

@@ -45,21 +45,21 @@ export default function SafetyQuiz() {
       <div
         className={`rounded-2xl border p-8 text-center ${
           result.passed
-            ? "border-brand-green/40 bg-brand-green/5"
-            : "border-amber-600/40 bg-amber-600/5"
+            ? "border-brand-green/40 bg-brand-green/10"
+            : "border-amber-500/40 bg-amber-500/10"
         }`}
       >
-        <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">
+        <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
           Quiz result
         </p>
         <p className="mt-2 text-4xl font-extrabold">
           {result.correct}/{result.total}{" "}
-          <span className="text-lg font-semibold text-neutral-500">({pct}%)</span>
+          <span className="text-lg font-semibold text-neutral-400">({pct}%)</span>
         </p>
 
         {result.passed ? (
           <>
-            <p className="mt-3 font-semibold text-brand-green dark:text-brand-green-light">
+            <p className="mt-3 font-semibold text-brand-green-light">
               Passed &mdash; the rest of VEX Basics 101 is now unlocked on this device.
             </p>
             <Link
@@ -71,13 +71,13 @@ export default function SafetyQuiz() {
           </>
         ) : (
           <>
-            <p className="mt-3 font-semibold text-amber-700 dark:text-amber-400">
+            <p className="mt-3 font-semibold text-amber-400">
               You need {Math.ceil(result.total * SAFETY_PASS_THRESHOLD)}/{result.total} (70%)
               to unlock the site. Review the guide above and try again.
             </p>
             <button
               onClick={retake}
-              className="mt-6 rounded-md bg-brand-black px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-800"
+              className="mt-6 rounded-md border border-white/20 bg-white/10 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/20"
             >
               Retake the quiz
             </button>
@@ -92,7 +92,7 @@ export default function SafetyQuiz() {
       {SAFETY_QUIZ.map((q, qIndex) => (
         <fieldset
           key={qIndex}
-          className="rounded-xl border border-black/10 p-5 dark:border-white/10"
+          className="rounded-xl border border-white/10 bg-white/5 p-5"
         >
           <legend className="px-1 text-sm font-semibold">
             {qIndex + 1}. {q.question}
@@ -106,7 +106,7 @@ export default function SafetyQuiz() {
                   className={`flex cursor-pointer items-center gap-3 rounded-md border px-3 py-2.5 text-sm transition-colors ${
                     selected
                       ? "border-brand-green bg-brand-green/10"
-                      : "border-black/10 hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/5"
+                      : "border-white/10 hover:bg-white/10"
                   }`}
                 >
                   <input

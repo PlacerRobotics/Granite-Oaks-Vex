@@ -13,7 +13,7 @@ export default function Section({
     <section className="mb-12">
       <h2 className="text-xl font-bold tracking-tight">{title}</h2>
       {intro && (
-        <p className="mt-2 max-w-3xl text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="mt-2 max-w-3xl text-sm text-neutral-300">
           {intro}
         </p>
       )}

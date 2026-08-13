@@ -36,9 +36,9 @@ export default function GearRatioCalculator() {
   const isGearingUp = outputTeeth < inputTeeth;
 
   return (
-    <div className="rounded-xl border border-black/10 p-6 dark:border-white/10">
+    <div className="rounded-xl border border-white/10 bg-white/5 p-6">
       <h2 className="text-lg font-bold">Gear Ratio & Wheel Speed Calculator</h2>
-      <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+      <p className="mt-1 text-sm text-neutral-300">
         &quot;Input&quot; is the gear attached to the motor; &quot;output&quot; is the gear
         attached to the wheel or mechanism. More output teeth relative to input teeth means more torque,
         less speed.
@@ -48,7 +48,7 @@ export default function GearRatioCalculator() {
         <label className="flex flex-col gap-1 text-sm font-medium">
           Motor
           <select
-            className="rounded-md border border-black/15 bg-transparent px-3 py-2 text-sm dark:border-white/20"
+            className="rounded-md border border-white/20 bg-white/5 px-3 py-2 text-sm text-white"
             value={motorRpm}
             onChange={(e) => setMotorRpm(Number(e.target.value))}
           >
@@ -66,7 +66,7 @@ export default function GearRatioCalculator() {
             type="number"
             min={0.5}
             step={0.25}
-            className="rounded-md border border-black/15 bg-transparent px-3 py-2 text-sm dark:border-white/20"
+            className="rounded-md border border-white/20 bg-white/5 px-3 py-2 text-sm text-white"
             value={wheelDiameter}
             onChange={(e) => setWheelDiameter(Number(e.target.value))}
           />
@@ -77,7 +77,7 @@ export default function GearRatioCalculator() {
           <input
             type="number"
             min={1}
-            className="rounded-md border border-black/15 bg-transparent px-3 py-2 text-sm dark:border-white/20"
+            className="rounded-md border border-white/20 bg-white/5 px-3 py-2 text-sm text-white"
             value={inputTeeth}
             onChange={(e) => setInputTeeth(Number(e.target.value))}
           />
@@ -88,7 +88,7 @@ export default function GearRatioCalculator() {
           <input
             type="number"
             min={1}
-            className="rounded-md border border-black/15 bg-transparent px-3 py-2 text-sm dark:border-white/20"
+            className="rounded-md border border-white/20 bg-white/5 px-3 py-2 text-sm text-white"
             value={outputTeeth}
             onChange={(e) => setOutputTeeth(Number(e.target.value))}
           />
@@ -96,35 +96,35 @@ export default function GearRatioCalculator() {
       </div>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-lg bg-neutral-50 p-4 dark:bg-white/5">
-          <p className="text-xs uppercase tracking-wide text-neutral-500">Ratio</p>
+        <div className="rounded-lg bg-white/10 p-4">
+          <p className="text-xs uppercase tracking-wide text-neutral-400">Ratio</p>
           <p className="mt-1 text-2xl font-bold">
             {inputTeeth}:{outputTeeth}{" "}
-            <span className="text-sm font-normal text-neutral-500">
+            <span className="text-sm font-normal text-neutral-400">
               ({isGearingUp ? "geared up — faster, less torque" : "geared down — more torque, slower"})
             </span>
           </p>
         </div>
-        <div className="rounded-lg bg-neutral-50 p-4 dark:bg-white/5">
-          <p className="text-xs uppercase tracking-wide text-neutral-500">Output speed</p>
+        <div className="rounded-lg bg-white/10 p-4">
+          <p className="text-xs uppercase tracking-wide text-neutral-400">Output speed</p>
           <p className="mt-1 text-2xl font-bold">{outputRpm.toFixed(1)} RPM</p>
         </div>
-        <div className="rounded-lg bg-neutral-50 p-4 dark:bg-white/5">
-          <p className="text-xs uppercase tracking-wide text-neutral-500">Torque multiplier</p>
+        <div className="rounded-lg bg-white/10 p-4">
+          <p className="text-xs uppercase tracking-wide text-neutral-400">Torque multiplier</p>
           <p className="mt-1 text-2xl font-bold">{torqueMultiplier.toFixed(2)}x</p>
         </div>
-        <div className="rounded-lg bg-neutral-50 p-4 dark:bg-white/5">
-          <p className="text-xs uppercase tracking-wide text-neutral-500">Wheel surface speed</p>
+        <div className="rounded-lg bg-white/10 p-4">
+          <p className="text-xs uppercase tracking-wide text-neutral-400">Wheel surface speed</p>
           <p className="mt-1 text-2xl font-bold">
             {surfaceSpeedFtPerSec.toFixed(2)} ft/s{" "}
-            <span className="text-sm font-normal text-neutral-500">
+            <span className="text-sm font-normal text-neutral-400">
               ({surfaceSpeedInPerSec.toFixed(1)} in/s)
             </span>
           </p>
         </div>
       </div>
 
-      <p className="mt-4 text-xs text-neutral-500">
+      <p className="mt-4 text-xs text-neutral-400">
         Estimate only — ignores efficiency losses, slippage, and load. Useful for
         comparing gearing options, not for precision tuning.
       </p>
