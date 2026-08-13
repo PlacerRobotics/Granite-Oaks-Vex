@@ -1,8 +1,10 @@
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
+import SafetyGate from "@/components/SafetyGate";
 
 export default function StrategyPage() {
   return (
+    <SafetyGate>
     <div>
       <PageHero
         eyebrow="Competition & Strategy"
@@ -60,5 +62,6 @@ export default function StrategyPage() {
         ]}
       />
     </div>
+    </SafetyGate>
   );
 }

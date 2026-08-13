@@ -1,8 +1,10 @@
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
+import SafetyGate from "@/components/SafetyGate";
 
 export default function NotebookPage() {
   return (
+    <SafetyGate>
     <div>
       <PageHero
         eyebrow="Engineering Notebook 101"
@@ -54,5 +56,6 @@ export default function NotebookPage() {
         ]}
       />
     </div>
+    </SafetyGate>
   );
 }

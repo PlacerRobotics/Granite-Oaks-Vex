@@ -1,8 +1,10 @@
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
+import SafetyGate from "@/components/SafetyGate";
 
 export default function CommunityPage() {
   return (
+    <SafetyGate>
     <div>
       <PageHero
         eyebrow="Community"
@@ -78,5 +80,6 @@ export default function CommunityPage() {
         ]}
       />
     </div>
+    </SafetyGate>
   );
 }

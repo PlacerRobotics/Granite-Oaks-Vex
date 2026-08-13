@@ -17,7 +17,7 @@ export type Resource = {
 };
 
 const TAG_STYLES: Record<ResourceTag, string> = {
-  Official: "bg-red-600/10 text-red-700 dark:text-red-400",
+  Official: "bg-brand-green/10 text-brand-green dark:text-brand-green-light",
   GitHub: "bg-neutral-900/10 text-neutral-800 dark:bg-white/10 dark:text-neutral-200",
   Video: "bg-rose-600/10 text-rose-700 dark:text-rose-400",
   Forum: "bg-blue-600/10 text-blue-700 dark:text-blue-400",
@@ -32,7 +32,7 @@ export default function ResourceCard({ title, url, description, tag }: Resource)
   const inner = (
     <>
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-semibold text-neutral-900 group-hover:text-red-700 dark:text-neutral-100 dark:group-hover:text-red-400">
+        <h3 className="font-semibold text-neutral-900 group-hover:text-brand-green dark:text-neutral-100 dark:group-hover:text-brand-green-light">
           {title}
         </h3>
         <span
@@ -51,7 +51,7 @@ export default function ResourceCard({ title, url, description, tag }: Resource)
   );
 
   const className =
-    "group flex flex-col gap-2 rounded-lg border border-black/10 p-4 transition-colors hover:border-red-600/40 hover:bg-red-600/5 dark:border-white/10 dark:hover:bg-red-600/10";
+    "group flex flex-col gap-2 rounded-lg border border-black/10 p-4 transition-colors hover:border-brand-green/40 hover:bg-brand-green/5 dark:border-white/10 dark:hover:bg-brand-green/10";
 
   if (isExternal) {
     return (

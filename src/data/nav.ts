@@ -11,6 +11,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/judging", label: "Judging" },
   { href: "/strategy", label: "Strategy" },
   { href: "/community", label: "Community" },
+  { href: "/safety", label: "Safety" },
   { href: "/glossary", label: "Glossary" },
   { href: "/tools", label: "Tools" },
   { href: "/lookup", label: "Team Lookup" },

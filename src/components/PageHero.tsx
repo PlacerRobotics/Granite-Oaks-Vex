@@ -9,7 +9,7 @@ export default function PageHero({
 }) {
   return (
     <div className="mb-10">
-      <p className="text-sm font-semibold uppercase tracking-wide text-red-600">
+      <p className="text-sm font-semibold uppercase tracking-wide text-amber-700 dark:text-brand-gold-light">
         {eyebrow}
       </p>
       <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">

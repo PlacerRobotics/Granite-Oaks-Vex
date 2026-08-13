@@ -1,8 +1,10 @@
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
+import SafetyGate from "@/components/SafetyGate";
 
 export default function JudgingPage() {
   return (
+    <SafetyGate>
     <div>
       <PageHero
         eyebrow="Judging & Interview Prep"
@@ -68,5 +70,6 @@ export default function JudgingPage() {
         </ul>
       </div>
     </div>
+    </SafetyGate>
   );
 }

@@ -71,7 +71,7 @@ export default function TeamLookup() {
         <button
           type="submit"
           disabled={loading}
-          className="rounded-md bg-red-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-red-700 disabled:opacity-60"
+          className="rounded-md bg-brand-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark disabled:opacity-60"
         >
           {loading ? "Searching…" : "Search"}
         </button>
@@ -94,7 +94,7 @@ export default function TeamLookup() {
               <h3 className="text-lg font-bold">
                 {team.number} <span className="font-normal text-neutral-500">— {team.team_name}</span>
               </h3>
-              <span className="text-xs font-medium uppercase tracking-wide text-red-600">
+              <span className="text-xs font-medium uppercase tracking-wide text-brand-green dark:text-brand-green-light">
                 {team.program?.name}
               </span>
             </div>
@@ -119,7 +119,7 @@ export default function TeamLookup() {
                           href={`https://www.robotevents.com/robot-competitions/vex-robotics-competition/${ev.sku}.html`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-medium text-neutral-800 hover:text-red-600 dark:text-neutral-200"
+                          className="font-medium text-neutral-800 hover:text-brand-green dark:text-neutral-200"
                         >
                           {ev.name}
                         </a>

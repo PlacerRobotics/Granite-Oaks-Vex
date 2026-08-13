@@ -1,8 +1,10 @@
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
+import SafetyGate from "@/components/SafetyGate";
 
 export default function CodingPage() {
   return (
+    <SafetyGate>
     <div>
       <PageHero
         eyebrow="Coding 101"
@@ -115,5 +117,6 @@ export default function CodingPage() {
         ]}
       />
     </div>
+    </SafetyGate>
   );
 }

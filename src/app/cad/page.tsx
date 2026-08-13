@@ -1,8 +1,10 @@
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
+import SafetyGate from "@/components/SafetyGate";
 
 export default function CadPage() {
   return (
+    <SafetyGate>
     <div>
       <PageHero
         eyebrow="CAD 101"
@@ -66,5 +68,6 @@ export default function CadPage() {
         ]}
       />
     </div>
+    </SafetyGate>
   );
 }
