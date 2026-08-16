@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VEX Basics 101
 
-## Getting Started
+**Live site: https://vex-teal.vercel.app**
 
-First, run the development server:
+An independent, unofficial resource hub for new VEX Robotics teams — building, CAD, coding,
+engineering notebooks, judging/interview prep, competition strategy, community links, a
+glossary, and a couple of small tools (gear ratio calculator, live team/event lookup via the
+RobotEvents API).
+
+The whole site is gated behind an electronics-care & lab-safety quiz at
+[`/safety`](https://vex-teal.vercel.app/safety) — score 70% or higher and it unlocks every
+other page on that browser (stored in `localStorage`, no account needed).
+
+## Stack
+
+- [Next.js](https://nextjs.org) (App Router) + TypeScript + Tailwind CSS v4
+- Deployed on [Vercel](https://vercel.com)
+- Team/event lookup calls the official [RobotEvents API](https://www.robotevents.com/api/v2)
+  through a server-side proxy route (`src/app/api/robotevents/route.ts`) so the API key never
+  reaches the browser
+
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To make the Team & Event Lookup page (`/lookup`) return real data, copy `.env.local.example` to
+`.env.local` and set `ROBOTEVENTS_TOKEN` to a free API token from
+[robotevents.com](https://www.robotevents.com/api/v2) (account → developer settings). Without
+it, the page shows a friendly "not configured" message instead of failing.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploying
 
-## Learn More
+The site auto-builds on Vercel from this repo. To deploy manually:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+vercel --prod
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/*` — one route per section (building, cad, coding, notebook, judging, strategy,
+  community, safety, glossary, tools, lookup)
+- `src/components/*` — shared UI (nav, resource cards, the safety gate/quiz, the gear ratio
+  calculator, team lookup)
+- `src/data/*` — nav links and the safety quiz question bank
+- `src/lib/safetyGate.ts` — the localStorage-backed unlock logic
