@@ -26,15 +26,4 @@ export function resetSafetyQuiz() {
   window.dispatchEvent(new Event(SAFETY_QUIZ_EVENT));
 }
 
-export const GATED_PATHS = [
-  "/building",
-  "/cad",
-  "/coding",
-  "/notebook",
-  "/judging",
-  "/strategy",
-  "/community",
-  "/glossary",
-  "/tools",
-  "/lookup",
-];
+export const GATED_PATHS = ["/courses/basic/building"];

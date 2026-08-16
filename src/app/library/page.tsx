@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import SafetyGate from "@/components/SafetyGate";
+import LinkGrid from "@/components/LinkGrid";
 
 type Term = { term: string; def: string };
 type Category = { name: string; terms: Term[] };
@@ -60,6 +60,7 @@ const CATEGORIES: Category[] = [
       { term: "Wrench", def: "Holds a nut steady while you drive the screw from the other side." },
       { term: "Nut driver", def: "Turns keps nuts without stripping them." },
       { term: "Standoff driver", def: "Seats and removes standoffs cleanly without stripping the threads." },
+      { term: "Forceps", def: "Not an official VEX tool, but a shop favorite — used to seat nylock nuts in tight spaces fingers can't reach." },
     ],
   },
   {
@@ -69,9 +70,13 @@ const CATEGORIES: Category[] = [
       { term: "Angle", def: "L-shaped structural metal piece, used where a full C-channel isn't needed." },
       { term: "Bracing", def: "Extra structure added to reduce flex and bowing, and make mechanisms more rigid." },
       { term: "Triangle bracing", def: "A diagonal brace that holds a vertical bar in tension or compression to keep it from moving sideways." },
-      { term: "Boxing", def: "A bracing technique that prevents the flanges of C-channels/U-channels from being crushed inward, keeping cross-brace connections rigid." },
-      { term: "Cross bracing", def: "A brace spanning the full width of a mechanism (e.g. one side of a drivetrain to the other), mounted low to reduce bending." },
+      { term: "Boxing", def: "A bracing technique that prevents the flanges of C-channels from being crushed inward. Done with loose spacers and a screw, or a coupler gusset for a stronger 3-hole hold." },
+      { term: "Coupler gusset", def: "A 7/8\"-wide gusset that drops inside a c-channel for boxing — stronger than spacer boxing (supports 3 holes instead of 1) but harder to fit in tight spots." },
+      { term: "Standoff brace", def: "A shaft-collar → coupler → standoff → coupler → shaft-collar assembly used as a lightweight brace anywhere you need to restrain motion in one direction." },
+      { term: "Shoulder screw", def: "A screw with a small unthreaded shoulder that fits square c-channel holes more precisely than a standard screw — used when bracing two c-channels flat-side to flat-side." },
+      { term: "Cross bracing", def: "A brace spanning the full width of a mechanism (e.g. one side of a drivetrain to the other), mounted low to reduce bending. Every robot needs at least one full-length cross brace." },
       { term: "Screw joint", def: "A rotating pivot point made from a screw and nylock nuts (with spacers to set position) through two pieces of metal — good for short, unpowered pivots up to about 3\"." },
+      { term: "Drive cap", def: "Official VEX capped-shaft hardware that retains a wheel or gear on a shaft without needing a separate shaft collar." },
     ],
   },
   {
@@ -81,35 +86,30 @@ const CATEGORIES: Category[] = [
       { term: "Gear", def: "A toothed part that transmits rotation between shafts; combining gears of different sizes sets your gear ratio." },
       { term: "Sprocket", def: "A toothed wheel that drives a chain, used like a gear but over longer distances." },
       { term: "Wheel (traction / omni / mecanum)", def: "Traction wheels grip hard for maximum power; omni wheels roll freely sideways for strafing drivetrains; mecanum wheels roll at an angle to allow holonomic (any-direction) movement." },
-      { term: "Bearing flat", def: "A flat plastic part with bearing holes that lets a shaft spin smoothly through a C-channel." },
+      { term: "Bearing flat", def: "A flat plastic part with bearing holes that lets a shaft spin smoothly through a C-channel. Fasten with 3 screws, flush against the structure." },
+      { term: "Pillow bearing", def: "A high-strength bearing block (often paired with a brass insert) used to reduce friction on higher-load spinning shafts, like intake rollers." },
+      { term: "Brass insert", def: "A low-friction metal insert fitted inside a pillow bearing (or gear/wheel hub) so a shaft spins smoothly against brass instead of raw plastic or metal." },
       { term: "Shaft collar", def: "Clamps onto a shaft to stop it from sliding side to side." },
-      { term: "Low-strength shaft", def: "Thinner metal shaft used for lighter-load spinning parts." },
-      { term: "High-strength shaft", def: "Thicker metal shaft used for high-torque, high-load parts like drivetrains." },
+      { term: "Low-strength shaft", def: "Thinner metal shaft used for lighter-load spinning parts or shorter spans." },
+      { term: "High-strength shaft", def: "Thicker metal shaft used for high-torque, high-load parts, longer spans, or drivetrains." },
     ],
   },
   {
     name: "Hardware",
     terms: [
       { term: "Screw", def: "VEX's standard fastener — mostly 8-32 threaded screws with a Torx head." },
-      { term: "Nut (nylock)", def: "A nylon-insert locknut that resists vibrating loose during a match." },
+      { term: "Nut (nylock)", def: "A nylon-insert locknut that resists vibrating loose during a match. Thinner nylocks save weight in places that don't need full thread engagement." },
       { term: "Spacer", def: "A plastic sleeve placed on a screw or shaft to set spacing between two parts." },
       { term: "Standoff", def: "A metal threaded post used to mount electronics or add height/spacing between two plates." },
     ],
   },
-  {
-    name: "Data & tools",
-    terms: [
-      { term: "RobotEvents", def: "The official event registration, results, and rankings platform for VEX competitions." },
-    ],
-  },
 ];
 
-export default function GlossaryPage() {
+export default function LibraryPage() {
   return (
-    <SafetyGate>
     <div>
       <PageHero
-        eyebrow="Glossary"
+        eyebrow="Library"
         title="VEX parts, tools, and jargon, decoded"
         description="Every acronym, part, and shop tool you'll hear at your first build meeting or event, in plain language."
       />
@@ -129,7 +129,28 @@ export default function GlossaryPage() {
           </dl>
         </section>
       ))}
+
+      <section className="mb-10">
+        <h2 className="mb-4 text-lg font-bold tracking-tight text-brand-green-light">
+          Utilities
+        </h2>
+        <LinkGrid
+          resources={[
+            {
+              title: "Gear Ratio Calculator",
+              url: "/tools",
+              description: "Plug in your gears and wheel size — get speed/torque tradeoffs instantly.",
+              tag: "Tool",
+            },
+            {
+              title: "Team & Event Lookup",
+              url: "/lookup",
+              description: "Live team info and event results via the official RobotEvents API.",
+              tag: "Tool",
+            },
+          ]}
+        />
+      </section>
     </div>
-    </SafetyGate>
   );
 }

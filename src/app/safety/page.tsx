@@ -1,13 +1,6 @@
 import PageHero from "@/components/PageHero";
 import SafetyQuiz from "@/components/SafetyQuiz";
-
-function Callout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-md border-l-4 border-brand-gold bg-brand-gold/10 px-4 py-3 text-sm">
-      {children}
-    </div>
-  );
-}
+import Callout from "@/components/Callout";
 
 function SafetySection({
   title,
@@ -32,7 +25,7 @@ export default function SafetyPage() {
       <PageHero
         eyebrow="Electronics Care & Lab Safety"
         title="Know this before you touch a robot"
-        description="A short overview of electronics care and shop/tool safety, pulled from real team check-in notes and camp material. Read it, then take the quiz below — 70% or higher unlocks the rest of the site."
+        description="A short overview of electronics care and shop/tool safety, pulled from real team check-in notes and camp material. Read it, then take the quiz below — 70% or higher unlocks the Basic Building course."
       />
 
       <SafetySection title="Wiring & battery care">
@@ -104,8 +97,8 @@ export default function SafetyPage() {
       <SafetySection title="Basic tool reference">
         <p>
           Full descriptions of every part and tool live in the{" "}
-          <a href="/glossary" className="font-medium text-brand-green-light hover:underline">
-            glossary
+          <a href="/library" className="font-medium text-brand-green-light hover:underline">
+            library
           </a>
           . The core hand tools you&apos;ll use constantly:
         </p>
@@ -120,7 +113,7 @@ export default function SafetyPage() {
       <section className="mt-16 border-t border-white/10 pt-10">
         <h2 className="text-2xl font-extrabold tracking-tight">Safety quiz</h2>
         <p className="mt-2 max-w-2xl text-sm text-neutral-400">
-          Score {"≥"}70% (7 of 10) to unlock every other page on this site. You can retake it as many
+          Score {"≥"}70% (7 of 10) to unlock the Basic Building course. You can retake it as many
           times as you need.
         </p>
         <div className="mt-6">

@@ -1,10 +1,8 @@
 import PageHero from "@/components/PageHero";
 import TeamLookup from "@/components/TeamLookup";
-import SafetyGate from "@/components/SafetyGate";
 
 export default function LookupPage() {
   return (
-    <SafetyGate>
     <div>
       <PageHero
         eyebrow="Team & Event Lookup"
@@ -13,6 +11,5 @@ export default function LookupPage() {
       />
       <TeamLookup />
     </div>
-    </SafetyGate>
   );
 }

@@ -1,10 +1,8 @@
 import PageHero from "@/components/PageHero";
 import GearRatioCalculator from "@/components/GearRatioCalculator";
-import SafetyGate from "@/components/SafetyGate";
 
 export default function ToolsPage() {
   return (
-    <SafetyGate>
     <div>
       <PageHero
         eyebrow="Tools"
@@ -14,6 +12,5 @@ export default function ToolsPage() {
 
       <GearRatioCalculator />
     </div>
-    </SafetyGate>
   );
 }
