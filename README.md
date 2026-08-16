@@ -2,14 +2,21 @@
 
 **Live site: https://vex-teal.vercel.app**
 
-An independent, unofficial resource hub for new VEX Robotics teams — building, CAD, coding,
-engineering notebooks, judging/interview prep, competition strategy, community links, a
-glossary, and a couple of small tools (gear ratio calculator, live team/event lookup via the
-RobotEvents API).
+An independent, unofficial resource hub for new VEX Robotics teams, structured as three
+sections:
 
-The whole site is gated behind an electronics-care & lab-safety quiz at
-[`/safety`](https://vex-teal.vercel.app/safety) — score 70% or higher and it unlocks every
-other page on that browser (stored in `localStorage`, no account needed).
+- **Courses** (`/courses`) — a **Basic** track (Building, Coding, CAD, Notebooking, Judging,
+  "What's a VEX Competition?") and an **Advanced** track (Building, Coding, CAD only) with
+  deeper technique.
+- **Library** (`/library`) — every VEX part, tool, and piece of jargon, decoded.
+- **Game Breakdown** (`/game`) — the current season's game: reveal video, official manual,
+  and rules Q&A.
+
+Only the **Basic Building** course is gated behind an electronics-care & lab-safety quiz at
+[`/safety`](https://vex-teal.vercel.app/safety) — score 70% or higher and it unlocks on that
+browser (stored in `localStorage`, no account needed). Everything else is open by default.
+The gear ratio calculator (`/tools`) and team/event lookup (`/lookup`) are live but not in the
+top nav — they're linked contextually from the Library and relevant courses.
 
 ## Stack
 
@@ -43,9 +50,12 @@ vercel --prod
 
 ## Project structure
 
-- `src/app/*` — one route per section (building, cad, coding, notebook, judging, strategy,
-  community, safety, glossary, tools, lookup)
-- `src/components/*` — shared UI (nav, resource cards, the safety gate/quiz, the gear ratio
-  calculator, team lookup)
+- `src/app/courses/basic/*` and `src/app/courses/advanced/*` — one route per course
+- `src/app/library`, `src/app/game`, `src/app/safety`, `src/app/tools`, `src/app/lookup` —
+  the other top-level pages
+- `src/components/*` — shared UI: `Module`/`LinkGrid`/`DiagramFrame`/`Callout` for course
+  content, `ResourceCard`/`Section` for link lists, the safety gate/quiz, the gear ratio
+  calculator, team lookup
 - `src/data/*` — nav links and the safety quiz question bank
-- `src/lib/safetyGate.ts` — the localStorage-backed unlock logic
+- `src/lib/safetyGate.ts` — the localStorage-backed unlock logic (`GATED_PATHS` controls
+  which routes show a lock indicator in the nav; `SafetyGate` is applied per-page)
