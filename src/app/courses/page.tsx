@@ -78,6 +78,17 @@ const ADVANCED_COURSES: ModuleItem[] = [
   },
 ];
 
+const PARENT_COURSES: ModuleItem[] = [
+  {
+    href: "/courses/parents",
+    number: "01",
+    title: "How a Season Goes",
+    desc: "The season timeline, what meetings and competition days look like, and how to actually help.",
+    tag: "For Parents",
+    alwaysOpen: true,
+  },
+];
+
 export default function CoursesPage() {
   return (
     <div>
@@ -94,7 +105,7 @@ export default function CoursesPage() {
         <ModuleGrid modules={BASIC_COURSES} />
       </section>
 
-      <section>
+      <section className="mb-14">
         <h2 className="mb-4 text-lg font-bold tracking-tight text-brand-gold-light">
           Advanced
         </h2>
@@ -103,6 +114,17 @@ export default function CoursesPage() {
           working robot.
         </p>
         <ModuleGrid modules={ADVANCED_COURSES} />
+      </section>
+
+      <section>
+        <h2 className="mb-4 text-lg font-bold tracking-tight text-brand-green-light">
+          For Parents
+        </h2>
+        <p className="mb-4 max-w-2xl text-sm text-neutral-400">
+          Not building, coding, or judging — a season overview for the people driving
+          carpool and asking &quot;so what does the robot actually do?&quot;
+        </p>
+        <ModuleGrid modules={PARENT_COURSES} />
       </section>
     </div>
   );
