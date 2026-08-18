@@ -2,8 +2,18 @@ import PageHero from "@/components/PageHero";
 import Module from "@/components/Module";
 import LinkGrid from "@/components/LinkGrid";
 
-export default function BasicCadCoursePage() {
+import CourseProgressProvider from "@/components/progress/CourseProgressProvider";
+import { getCourseProgress } from "@/lib/progress";
+
+export default async function BasicCadCoursePage() {
+  const { userId, completedModules } = await getCourseProgress("basic-cad");
+
   return (
+    <CourseProgressProvider
+      courseSlug="basic-cad"
+      initialUserId={userId}
+      initialCompleted={completedModules}
+    >
     <div>
       <PageHero
         eyebrow="Basic Course · CAD"
@@ -84,5 +94,6 @@ export default function BasicCadCoursePage() {
         />
       </Module>
     </div>
+    </CourseProgressProvider>
   );
 }

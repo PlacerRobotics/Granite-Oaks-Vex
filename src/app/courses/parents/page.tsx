@@ -1,9 +1,20 @@
 import PageHero from "@/components/PageHero";
 import Module from "@/components/Module";
+import LinkGrid from "@/components/LinkGrid";
+import Callout from "@/components/Callout";
 import DiagramFrame from "@/components/DiagramFrame";
+import CourseProgressProvider from "@/components/progress/CourseProgressProvider";
+import { getCourseProgress } from "@/lib/progress";
 
-export default function ParentsCoursePage() {
+export default async function ParentsCoursePage() {
+  const { userId, completedModules } = await getCourseProgress("parents");
+
   return (
+    <CourseProgressProvider
+      courseSlug="parents"
+      initialUserId={userId}
+      initialCompleted={completedModules}
+    >
     <div>
       <PageHero
         eyebrow="For Parents & Guardians"
@@ -64,7 +75,49 @@ export default function ParentsCoursePage() {
         </ul>
       </Module>
 
-      <Module number="05" title="Costs & fundraising">
+      <Module number="05" title="Registering, paying & signing up for events">
+        <p>
+          Almost all of this is handled by your team&apos;s coach/lead, not by individual
+          families — but it helps to know where the money and paperwork actually go.
+        </p>
+        <ul className="list-disc space-y-2 pl-5">
+          <li>
+            <strong>Season team registration</strong> happens once a year on{" "}
+            <strong>RobotEvents.com</strong>: create a login, register the team under the
+            program (V5RC, VIQRC, etc.), and pay the season registration fee. This has to
+            happen before the team can sign up for any individual competition, and there&apos;s
+            a season deadline — check RobotEvents for the current one.
+          </li>
+          <li>
+            <strong>Each competition</strong> is a separate registration and a separate
+            fee, paid through the same RobotEvents.com account — everything from free
+            scrimmages up to $50–100+ for a typical qualifier, more for Signature/Championship
+            events, plus a small flat platform fee per registration.
+          </li>
+          <li>
+            <strong>Payment</strong> happens in the RobotEvents cart at checkout (card), or
+            a team can select <strong>&quot;Pay Later&quot;</strong> if payment (e.g. a
+            school purchase order) needs to be arranged before the event.
+          </li>
+        </ul>
+        <Callout>
+          Exact fees and deadlines change season to season and by event — always confirm
+          current numbers with your coach/lead or directly on RobotEvents.com rather than
+          budgeting off last year&apos;s prices.
+        </Callout>
+        <LinkGrid
+          resources={[
+            {
+              title: "RobotEvents.com",
+              url: "https://www.robotevents.com/",
+              description: "Where teams register for the season and sign up/pay for individual events.",
+              tag: "Official",
+            },
+          ]}
+        />
+      </Module>
+
+      <Module number="06" title="Costs & fundraising">
         <p>
           Costs typically include team registration/membership, per-event competition fees,
           replacement parts, and travel if the team attends away events or qualifies for a
@@ -74,7 +127,7 @@ export default function ParentsCoursePage() {
         </p>
       </Module>
 
-      <Module number="06" title="Staying in the loop">
+      <Module number="07" title="Staying in the loop">
         <ul className="list-disc space-y-2 pl-5">
           <li>Ask your student to show you their engineering notebook once in a while — it&apos;s a genuinely good window into what they&apos;re actually doing week to week.</li>
           <li>Find out which channel your team uses for updates (Slack, email list, group chat) and where the season schedule gets posted.</li>
@@ -82,5 +135,6 @@ export default function ParentsCoursePage() {
         </ul>
       </Module>
     </div>
+    </CourseProgressProvider>
   );
 }

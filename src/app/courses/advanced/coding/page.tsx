@@ -3,8 +3,18 @@ import Module from "@/components/Module";
 import LinkGrid from "@/components/LinkGrid";
 import Callout from "@/components/Callout";
 
-export default function AdvancedCodingCoursePage() {
+import CourseProgressProvider from "@/components/progress/CourseProgressProvider";
+import { getCourseProgress } from "@/lib/progress";
+
+export default async function AdvancedCodingCoursePage() {
+  const { userId, completedModules } = await getCourseProgress("advanced-coding");
+
   return (
+    <CourseProgressProvider
+      courseSlug="advanced-coding"
+      initialUserId={userId}
+      initialCompleted={completedModules}
+    >
     <div>
       <PageHero
         eyebrow="Advanced Course · Coding"
@@ -146,5 +156,6 @@ export default function AdvancedCodingCoursePage() {
         />
       </Module>
     </div>
+    </CourseProgressProvider>
   );
 }

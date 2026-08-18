@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV_ITEMS } from "@/data/nav";
 import { GATED_PATHS, isSafetyQuizPassed, SAFETY_QUIZ_EVENT } from "@/lib/safetyGate";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { createClient } from "@/lib/supabase/client";
 
 function LockIcon() {
   return (
@@ -24,6 +26,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [passed, setPassed] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
 
   useEffect(() => {
     const check = () => setPassed(isSafetyQuizPassed());
@@ -34,6 +37,19 @@ export default function Nav() {
       window.removeEventListener(SAFETY_QUIZ_EVENT, check);
       window.removeEventListener("storage", check);
     };
+  }, []);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured()) return;
+    const supabase = createClient();
+
+    supabase.auth.getUser().then(({ data }) => setSignedIn(!!data.user));
+
+    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSignedIn(!!session?.user);
+    });
+
+    return () => subscription.subscription.unsubscribe();
   }, []);
 
   return (
@@ -67,6 +83,16 @@ export default function Nav() {
               </Link>
             );
           })}
+          <Link
+            href={signedIn ? "/account" : "/account/sign-in"}
+            className={`ml-1 flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium transition-colors ${
+              pathname.startsWith("/account") || pathname === "/team"
+                ? "border-brand-gold bg-brand-gold/15 text-brand-gold-light"
+                : "border-white/20 text-neutral-300 hover:bg-white/10"
+            }`}
+          >
+            {signedIn ? "Account" : "Sign In"}
+          </Link>
         </nav>
 
         <button
@@ -101,6 +127,13 @@ export default function Nav() {
               </Link>
             );
           })}
+          <Link
+            href={signedIn ? "/account" : "/account/sign-in"}
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-1.5 rounded-md border border-white/20 px-3 py-2 text-sm font-medium text-neutral-300 hover:bg-white/10"
+          >
+            {signedIn ? "Account" : "Sign In"}
+          </Link>
         </nav>
       )}
     </header>

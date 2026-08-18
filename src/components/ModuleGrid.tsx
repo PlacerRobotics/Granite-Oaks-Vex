@@ -11,6 +11,7 @@ export type Module = {
   desc: string;
   tag: string;
   alwaysOpen?: boolean;
+  progress?: { done: number; total: number };
 };
 
 export default function ModuleGrid({ modules }: { modules: Module[] }) {
@@ -55,6 +56,19 @@ export default function ModuleGrid({ modules }: { modules: Module[] }) {
               {m.title}
             </h3>
             <p className="mt-1 text-sm text-neutral-300">{m.desc}</p>
+            {m.progress && (
+              <div className="mt-3">
+                <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-brand-green"
+                    style={{ width: `${Math.round((m.progress.done / m.progress.total) * 100)}%` }}
+                  />
+                </div>
+                <p className="mt-1 text-xs text-neutral-500">
+                  {m.progress.done}/{m.progress.total} complete
+                </p>
+              </div>
+            )}
           </Link>
         );
       })}

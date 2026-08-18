@@ -3,8 +3,18 @@ import Module from "@/components/Module";
 import Callout from "@/components/Callout";
 import DiagramFrame from "@/components/DiagramFrame";
 
-export default function AdvancedBuildingCoursePage() {
+import CourseProgressProvider from "@/components/progress/CourseProgressProvider";
+import { getCourseProgress } from "@/lib/progress";
+
+export default async function AdvancedBuildingCoursePage() {
+  const { userId, completedModules } = await getCourseProgress("advanced-building");
+
   return (
+    <CourseProgressProvider
+      courseSlug="advanced-building"
+      initialUserId={userId}
+      initialCompleted={completedModules}
+    >
     <div>
       <PageHero
         eyebrow="Advanced Course · Building"
@@ -170,5 +180,6 @@ export default function AdvancedBuildingCoursePage() {
         </ul>
       </Module>
     </div>
+    </CourseProgressProvider>
   );
 }

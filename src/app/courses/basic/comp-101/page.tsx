@@ -3,8 +3,18 @@ import Module from "@/components/Module";
 import LinkGrid from "@/components/LinkGrid";
 import DiagramFrame from "@/components/DiagramFrame";
 
-export default function CompetitionBasicsCoursePage() {
+import CourseProgressProvider from "@/components/progress/CourseProgressProvider";
+import { getCourseProgress } from "@/lib/progress";
+
+export default async function CompetitionBasicsCoursePage() {
+  const { userId, completedModules } = await getCourseProgress("basic-comp-101");
+
   return (
+    <CourseProgressProvider
+      courseSlug="basic-comp-101"
+      initialUserId={userId}
+      initialCompleted={completedModules}
+    >
     <div>
       <PageHero
         eyebrow="Basic Course · What's a VEX Competition?"
@@ -86,5 +96,6 @@ export default function CompetitionBasicsCoursePage() {
         />
       </Module>
     </div>
+    </CourseProgressProvider>
   );
 }
